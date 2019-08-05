@@ -19,9 +19,11 @@ class ViewController: UIViewController {
         }
         print(tree)
         
+        print("remove 3")
         tree.remove(3)
         print(tree)
         
+        print("remove 5")
         tree.remove(5)
         print(tree)
     }
