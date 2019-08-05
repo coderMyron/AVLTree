@@ -7,14 +7,14 @@ AVL树，第一个自平衡的二叉搜索树，是Adelson-Velsky 和 Evgenii La
 ## 平衡因子
 二叉搜索树平衡的条件是树中所有节点的左子节点高度和右子节点高度的差的绝对值不大于1，我们把这个条件称为 balance factor，平衡因子  
 ## 左旋转
-private func leftRotate(_ node: AVLNode<Element>) -> AVLNode<Element> {
-    guard let pivot = node.rightChild else { return node }
-    node.rightChild = pivot.leftChild
-    pivot.leftChild = node
-    node.height = max(node.leftHeight, node.rightHeight) + 1
-    pivot.height = max(pivot.leftHeight, pivot.rightHeight) + 1
-    return pivot
-}
+private func leftRotate(_ node: AVLNode<Element>) -> AVLNode<Element> {  
+    guard let pivot = node.rightChild else { return node }  
+    node.rightChild = pivot.leftChild  
+    pivot.leftChild = node  
+    node.height = max(node.leftHeight, node.rightHeight) + 1  
+    pivot.height = max(pivot.leftHeight, pivot.rightHeight) + 1  
+    return pivot  
+}  
 
 * 把被旋转的节点(A)的右节点(B)作为轴，这个右节点最终将替代被旋转的节点作为根节点
 * 被旋转的节点(A)的右节点更新为轴的左节点(X)
@@ -23,11 +23,11 @@ private func leftRotate(_ node: AVLNode<Element>) -> AVLNode<Element> {
 右旋转与左旋转类似，只不过是leftChild和rightChild对调了而已  
 
 ## 右左旋转
-private func rightLeftRotate(_ node: AVLNode<Element>) -> AVLNode<Element> {
-    guard let rightChild = node.rightChild else { return node }
-    node.rightChild = rightRotate(rightChild)
-    return leftRotate(node)
-}
+private func rightLeftRotate(_ node: AVLNode<Element>) -> AVLNode<Element> {  
+    guard let rightChild = node.rightChild else { return node }  
+    node.rightChild = rightRotate(rightChild)  
+    return leftRotate(node)  
+}  
 左右旋转与右左旋转相反  
 
 ## 平衡的处理
